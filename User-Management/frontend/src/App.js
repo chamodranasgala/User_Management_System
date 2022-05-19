@@ -63,7 +63,12 @@ export default class App extends Component {
         <Route path="/login" component={Login}></Route>
         <Route path="/login" component={Footer}></Route>
 
-        <Route path="/" component={Test}></Route>
+
+
+
+        <Route path="/test" component={Header}></Route>
+        <Route path="/test" component={Test}></Route>
+        <Route path="/test" component={Footer}></Route>
 
       </BrowserRouter>
 
