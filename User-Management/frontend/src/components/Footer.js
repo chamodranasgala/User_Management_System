@@ -4,9 +4,6 @@ function Footer() {
     return (
 
         <footer class="text-center text-white" style={{ backgroundColor: '#f1f1f1' }}>
-
-
-
             <div>
 
                 <section>

@@ -22,49 +22,50 @@ import Footer from './components/Footer';
 //Login
 import Login from './components/Login';
 
+import Test from './components/test';
+
 
 export default class App extends Component {
   render() {
     return (
 
-      <div>
-        <BrowserRouter>
+      <BrowserRouter>
 
-          {/*Member*/}
+        {/*Member*/}
+        <Route path="/memberlist" component={Header}></Route>
+        <Route path="/memberlist" component={Navbar}></Route>
+        <Route path="/memberlist" component={MemberList}></Route>
+        <Route path="/memberlist" component={Footer}></Route>
 
-          <Route path="/memberlist" component={Header}></Route>
-          <Route path="/memberlist" component={Navbar}></Route>
-          <Route path="/memberlist" component={MemberList}></Route>
-          <Route path="/memberlist" component={Footer}></Route>
+        <Route path="/editmember" component={Header}></Route>
+        <Route path="/editmember" component={Navbar}></Route>
+        <Route path="/editmember/:id" component={EditMember}></Route>
+        <Route path="/editmember" component={Footer}></Route>
 
-          <Route path="/editmember" component={Header}></Route>
-          <Route path="/editmember" component={Navbar}></Route>
-          <Route path="/editmember/:id" component={EditMember}></Route>
-          <Route path="/editmember" component={Footer}></Route>
+        <Route path="/postmember" component={Header}></Route>
+        <Route path="/postmember" component={Navbar}></Route>
+        <Route path="/postmember/:id" component={PostMember}></Route>
+        <Route path="/postmember" component={Footer}></Route>
 
-          <Route path="/postmember" component={Header}></Route>
-          <Route path="/postmember" component={Navbar}></Route>
-          <Route path="/postmember/:id" component={PostMember}></Route>
-          <Route path="/postmember" component={Footer}></Route>
+        {/*Workout Plan*/}
+        <Route path="/workoutplans" component={Header}></Route>
+        <Route path="/workoutplans" component={Navbar}></Route>
+        <Route path="/workoutplans" component={WorkoutPlan}></Route>
+        <Route path="/workoutplans" component={Footer}></Route>
 
-          {/*Workout Plan*/}
-          <Route path="/workoutplans" component={Header}></Route>
-          <Route path="/workoutplans" component={Navbar}></Route>
-          <Route path="/workoutplans" component={WorkoutPlan}></Route>
-          <Route path="/workoutplans" component={Footer}></Route>
+        <Route path="/editworkoutplan" component={Header}></Route>
+        <Route path="/editworkoutplan" component={Navbar}></Route>
+        <Route path="/editworkoutplan/:id" component={EditPlan}></Route>
+        <Route path="/editworkoutplan" component={Footer}></Route>
 
-          <Route path="/editworkoutplan" component={Header}></Route>
-          <Route path="/editworkoutplan" component={Navbar}></Route>
-          <Route path="/editworkoutplan/:id" component={EditPlan}></Route>
-          <Route path="/editworkoutplan" component={Footer}></Route>
+        {/*Login*/}
+        <Route path="/login" component={Header}></Route>
+        <Route path="/login" component={Login}></Route>
+        <Route path="/login" component={Footer}></Route>
 
-          {/*Login*/}
-          <Route path="/" component={Header}></Route>
-          <Route path="/" exact component={Login}></Route>
-          <Route path="/" component={Footer}></Route>
+        <Route path="/" component={Test}></Route>
 
-        </BrowserRouter>
-      </div>
+      </BrowserRouter>
 
     )
   }

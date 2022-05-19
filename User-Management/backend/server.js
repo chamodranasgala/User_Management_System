@@ -18,7 +18,7 @@ app.use(memberRoutes);
 app.use(workoutplanRoutes);
 
 const PORT = 8000;
-const DB_URL = 'mongodb+srv://gym_management_system:gym123@gymmanagementsystem.mgho2.mongodb.net/GymManagementSystemretryWrites=true&w=majority';
+const DB_URL = 'mongodb+srv://gym_management_system:gym123@gymmanagementsystem.mgho2.mongodb.net/GymManagementSystem?retryWrites=true&w=majority';
 
 mongoose.connect(DB_URL, {
     useNewUrlParser: true,

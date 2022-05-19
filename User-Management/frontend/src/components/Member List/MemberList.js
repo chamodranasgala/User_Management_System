@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import jsPDF from 'jspdf';
-import '../../assets/css/navbar.css';
 
 export default class MemberList extends Component {
 
@@ -170,7 +169,7 @@ export default class MemberList extends Component {
 
     doc.addImage(image, 'PNG', left, top, imgWidth, imgHeight);
 
-    doc.save(`WorkoutPlan ${memberName}.pdf`)
+    doc.save(`Member - ${memberName}.pdf`)
   }
 
 
