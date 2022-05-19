@@ -25,7 +25,7 @@ export default class PostMember extends Component {
 
   render() {
 
-    const {memberName, address, email, phoneNumber, gender, weight, height, joiningDate, otherDetails} = this.state.member;
+    const { memberName, address, email, phoneNumber, gender, weight, height, joiningDate, otherDetails } = this.state.member;
 
     return (
       <div className='container'>
