@@ -132,7 +132,7 @@ export default class WorkoutPlan extends Component {
 
     const unit = "pt";
     const size = "A4"; //page size
-    const orientation = "landscape";
+    const orientation = "portrait";
     const doc = new jsPDF(orientation, unit, size); //create document
     const title = `| POWERZONE | `;
 
@@ -143,22 +143,22 @@ export default class WorkoutPlan extends Component {
 
     const image = "https://res.cloudinary.com/dnonvyjrq/image/upload/v1651654099/gym_logo_vndrpz.jpg";
 
-    const left = 30;
-    const top = 8;
-    const imgWidth = 100;
-    const imgHeight = 100;
+    const left = 50;
+    const top = 50;
+    const imgWidth = 75;
+    const imgHeight = 75;
 
-    doc.setFontSize(20);
+    doc.setFontSize(15);
 
-    doc.text(150, 40, title);
+    doc.text(150, 93, title);
 
-    doc.text(60, 200, planNames);
-    doc.text(60, 250, prices);
-    doc.text(60, 300, durations);
+    doc.text(50, 200, planNames);
+    doc.text(50, 240, prices);
+    doc.text(50, 280, durations);
 
     doc.addImage(image, 'PNG', left, top, imgWidth, imgHeight);
 
-    doc.save(`WorkoutPlan - ${planName}.pdf`)
+    doc.save(`WorkoutPlan-${planName}.pdf`)
   }
 
   render() {
@@ -198,12 +198,12 @@ export default class WorkoutPlan extends Component {
                     <a className='btn btn-warning' href={`/editworkoutplan/${workoutplans._id}`}>
                       <i className='fas fa-edit'></i>&nbsp;Edit
                     </a>
-                    &nbsp;
+                    &nbsp;&nbsp;
 
                     <a className='btn btn-danger' href="" onClick={() => this.onDelete(workoutplans._id)}>
                       <i className='far fa-trash-alt'></i>&nbsp;Delete
                     </a>
-                    &nbsp;
+                    &nbsp;&nbsp;
 
                     <button class="btn btn-outline-info" onClick={() => this.createPDF(workoutplans.planName, workoutplans.price, workoutplans.duration)} >
                       <i class="fa-solid fa-file-pdf"></i>&nbsp;Generate PDF

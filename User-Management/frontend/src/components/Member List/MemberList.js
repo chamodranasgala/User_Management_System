@@ -131,7 +131,7 @@ export default class MemberList extends Component {
 
     const unit = "pt";
     const size = "A4"; //page size
-    const orientation = "landscape";
+    const orientation = "portrait";
     const doc = new jsPDF(orientation, unit, size); //create document
     const title = `| POWERZONE | `;
 
@@ -148,28 +148,28 @@ export default class MemberList extends Component {
 
     const image = "https://res.cloudinary.com/dnonvyjrq/image/upload/v1651654099/gym_logo_vndrpz.jpg";
 
-    const left = 30;
-    const top = 8;
-    const imgWidth = 100;
-    const imgHeight = 100;
+    const left = 50;
+    const top = 50;
+    const imgWidth = 75;
+    const imgHeight = 75;
 
-    doc.setFontSize(20);
+    doc.setFontSize(15);
 
-    doc.text(150, 40, title);
+    doc.text(150, 93, title);
 
-    doc.text(60, 200, memberNames);
-    doc.text(60, 240, addresss);
-    doc.text(60, 280, emails);
-    doc.text(60, 320, phoneNumbers);
-    doc.text(60, 360, genders);
-    doc.text(60, 400, weights);
-    doc.text(60, 440, heights);
-    doc.text(60, 480, joiningDates);
-    doc.text(60, 520, otherDetailss);
+    doc.text(50, 200, memberNames);
+    doc.text(50, 240, addresss);
+    doc.text(50, 280, emails);
+    doc.text(50, 320, phoneNumbers);
+    doc.text(50, 360, genders);
+    doc.text(50, 400, weights);
+    doc.text(50, 440, heights);
+    doc.text(50, 480, joiningDates);
+    doc.text(50, 520, otherDetailss);
 
     doc.addImage(image, 'PNG', left, top, imgWidth, imgHeight);
 
-    doc.save(`Member - ${memberName}.pdf`)
+    doc.save(`Member-${memberName}.pdf`)
   }
 
 
