@@ -31,13 +31,13 @@ export default class EditPlan extends Component {
 
 
     if (!this.state.planName) {
-      planNameError = 'This field cannot be Empty!';
+      planNameError = 'This field is required!';
     }
     if (!this.state.price) {
-      priceError = 'This field cannot be Empty!';
+      priceError = 'This field is required!';
     }
     if (!this.state.duration) {
-      durationError = 'This field cannot be Empty!';
+      durationError = 'This field is required!';
     }
 
 
@@ -99,7 +99,7 @@ export default class EditPlan extends Component {
 
   render() {
     return (
-      <div className='container' style={{marginBottom: '75px'}}>
+      <div className='container' style={{ marginBottom: '75px' }}>
         <div className='col-md-8 mt-4 mx-auto'>
           <center><h1 className='h3 mb-3 font-weight-normal'>Edit Plan Details</h1></center>
 
@@ -108,16 +108,19 @@ export default class EditPlan extends Component {
             <div className='form-group' style={{ marginBottom: '15px' }}>
               <label style={{ marginBottom: '5px' }}>Plan Name</label>
               <input type='text' className='form-control' name='planName' placeholder='Enter Plan Name' value={this.state.planName} onChange={this.handleInputChange}></input>
-
               <div style={{ fontSize: 12, color: 'red' }}>
                 {this.state.planNameError}
               </div>
-
             </div>
 
             <div className='form-group' style={{ marginBottom: '15px' }}>
               <label style={{ marginBottom: '5px' }}>Price (Rs.)</label>
-              <input type="text" className='form-control' name='price' placeholder='Enter Price' value={this.state.price} onChange={this.handleInputChange}></input>
+              <div class="input-group">
+                <input type="text" className='form-control' name='price' placeholder='Enter Price' value={this.state.price} onChange={this.handleInputChange}></input>
+                <div class="input-group-append">
+                  <span class="input-group-text">.00</span>
+                </div>
+              </div>
               <div style={{ fontSize: 12, color: 'red' }}>
                 {this.state.priceError}
               </div>
@@ -126,11 +129,9 @@ export default class EditPlan extends Component {
             <div className='form-group' style={{ marginBottom: '15px' }}>
               <label style={{ marginBottom: '5px' }}>Duration (Months)</label>
               <input type="text" className='form-control' name='duration' placeholder='Enter Duration' value={this.state.duration} onChange={this.handleInputChange}></input>
-
               <div style={{ fontSize: 12, color: 'red' }}>
                 {this.state.durationError}
               </div>
-
             </div>
 
             <button className='btn btn-warning' type='submit' style={{ marginTop: '15px' }} onClick={this.onSubmit}>
@@ -138,7 +139,7 @@ export default class EditPlan extends Component {
               &nbsp; Edit
             </button>&nbsp;&nbsp;
 
-            <a href='/memberlist'><button type='button' class="btn btn-secondary" style={{ marginTop: '15px' }}><i class="fa-regular fa-circle-xmark"></i>&nbsp;Close</button></a>
+            <a href='/workoutplans'><button type='button' class="btn btn-secondary" style={{ marginTop: '15px' }}><i class="fa-regular fa-circle-xmark"></i>&nbsp;Close</button></a>
 
           </form>
         </div>

@@ -106,13 +106,13 @@ export default class WorkoutPlan extends Component {
 
 
     if (!this.state.planName) {
-      planNameError = 'This field cannot be Empty!';
+      planNameError = 'This field is required!';
     }
     if (!this.state.price) {
-      priceError = 'This field cannot be Empty!';
+      priceError = 'This field is required!';
     }
     if (!this.state.duration) {
-      durationError = 'This field cannot be Empty!';
+      durationError = 'This field is required!';
     }
 
 
@@ -206,7 +206,7 @@ export default class WorkoutPlan extends Component {
                     &nbsp;&nbsp;
 
                     <button class="btn btn-outline-info" onClick={() => this.createPDF(workoutplans.planName, workoutplans.price, workoutplans.duration)} >
-                      <i class="fa-solid fa-file-pdf"></i>&nbsp;Generate PDF
+                      <i class="fa-solid fa-file-pdf"></i>&nbsp;Get Report
                     </button>
 
                   </td>

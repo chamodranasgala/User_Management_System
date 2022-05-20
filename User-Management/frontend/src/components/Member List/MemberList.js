@@ -33,44 +33,89 @@ export default class MemberList extends Component {
     });
   }
 
-  //Add New Member Button
+  // Validation
+  validate = () => {
+
+    let memberNameError = "";
+    let addressError = "";
+    let emailError = "";
+    let phoneNumberError = "";
+    let genderError = "";
+    let weightError = "";
+    let heightError = "";
+
+    if (!this.state.memberName) {
+      memberNameError = 'This field is required!';
+    }
+    if (!this.state.address) {
+      addressError = 'This field is required!';
+    }
+    if (!this.state.email) {
+      emailError = 'This field is required!';
+    }
+    if (!this.state.phoneNumber) {
+      phoneNumberError = 'This field is required!';
+    }
+    if (!this.state.gender) {
+      genderError = 'This field is required!';
+    }
+    if (!this.state.weight) {
+      weightError = 'This field is required!';
+    }
+    if (!this.state.height) {
+      heightError = 'This field is required!';
+    }
+
+    if (memberNameError || addressError || emailError || phoneNumberError || genderError || weightError || heightError) {
+      this.setState({ memberNameError, addressError, emailError, phoneNumberError, genderError, weightError, heightError });
+      return false;
+    }
+
+    return true;
+  };
+
+  //Add
   onSubmit = (e) => {
     e.preventDefault();
 
     const { memberName, address, email, phoneNumber, gender, weight, height, joiningDate, otherDetails } = this.state;
 
-    const data = {
-      memberName: memberName,
-      address: address,
-      email: email,
-      phoneNumber: phoneNumber,
-      gender: gender,
-      weight: weight,
-      height: height,
-      joiningDate: joiningDate,
-      otherDetails: otherDetails
-    }
+    const isValid = this.validate();
+    if (isValid) {
+      const data = {
 
-    console.log(data)
-
-    axios.post("/member/save", data).then((res) => {
-      if (res.data.success) {
-        alert("Member Detailes Saved Successfully");
-        this.setState(
-          {
-            memberName: "",
-            address: "",
-            email: "",
-            phoneNumber: "",
-            gender: "",
-            weight: "",
-            height: "",
-            joiningDate: "",
-            otherDetails: ""
-          }
-        )
+        memberName: memberName,
+        address: address,
+        email: email,
+        phoneNumber: phoneNumber,
+        gender: gender,
+        weight: weight,
+        height: height,
+        joiningDate: joiningDate,
+        otherDetails: otherDetails
       }
-    });
+
+      console.log(data)
+
+      axios.post("/member/save", data).then((res) => {
+        if (res.data.success) {
+          alert("Member Detailes Saved Successfully");
+          this.setState(
+            {
+              memberName: "",
+              address: "",
+              email: "",
+              phoneNumber: "",
+              gender: "",
+              weight: "",
+              height: "",
+              joiningDate: "",
+              otherDetails: ""
+            }
+          )
+        }
+      });
+    }
   }
 
   componentDidMount() {
@@ -176,7 +221,7 @@ export default class MemberList extends Component {
 
   render() {
     return (
-      <div className='container' style={{marginBottom: '50px'}}>
+      <div className='container' style={{ marginBottom: '50px' }}>
 
         <br></br>
 
@@ -202,20 +247,34 @@ export default class MemberList extends Component {
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <form>
+
+                <form className='needs-validation' noValidate>
+
                   <div className='form-group' style={{ marginBottom: '15px' }}>
                     <label style={{ marginBottom: '5px' }}>Name</label>
-                    <input type='text' className='form-control' name='memberName' placeholder='Enter Name' value={this.state.memberName} onChange={this.handleInputChange} required></input>
+                    <input type='text' className='form-control' name='memberName' placeholder='Enter Name' value={this.state.memberName} onChange={this.handleInputChange}></input>
+
+                    <div style={{ fontSize: 12, color: 'red' }}>
+                      {this.state.memberNameError}
+                    </div>
                   </div>
 
                   <div className='form-group' style={{ marginBottom: '15px' }}>
                     <label style={{ marginBottom: '5px' }}>Address</label>
                     <input type='text' className='form-control' name='address' placeholder='Enter Address' value={this.state.address} onChange={this.handleInputChange}></input>
+
+                    <div style={{ fontSize: 12, color: 'red' }}>
+                      {this.state.addressError}
+                    </div>
                   </div>
 
                   <div className='form-group' style={{ marginBottom: '15px' }}>
                     <label style={{ marginBottom: '5px' }}>Email</label>
                     <input type='email' className='form-control' name='email' placeholder='Enter Email' value={this.state.email} onChange={this.handleInputChange}></input>
+
+                    <div style={{ fontSize: 12, color: 'red' }}>
+                      {this.state.emailError}
+                    </div>
                   </div>
 
                   <div className='form-group' style={{ marginBottom: '15px' }}>
@@ -225,6 +284,10 @@ export default class MemberList extends Component {
                         <span class="input-group-text" id="inputGroupPrepend">+94</span>
                       </div>
                       <input type='tel' className='form-control' name='phoneNumber' placeholder='Enter Phone Number' aria-describedby="inputGroupPrepend" value={this.state.phoneNumber} onChange={this.handleInputChange}></input>
+                    </div>
+
+                    <div style={{ fontSize: 12, color: 'red' }}>
+                      {this.state.phoneNumberError}
                     </div>
                   </div>
 
@@ -236,21 +299,37 @@ export default class MemberList extends Component {
                       <option>Male</option>
                       <option>Female</option>
                     </select>
+
+                    <div style={{ fontSize: 12, color: 'red' }}>
+                      {this.state.genderError}
+                    </div>
                   </div>
 
                   <div className='form-group' style={{ marginBottom: '15px' }}>
                     <label style={{ marginBottom: '5px' }}>Weight (kg)</label>
                     <input type='number' className='form-control' name='weight' min="1" placeholder='Enter Weight' value={this.state.weight} onChange={this.handleInputChange}></input>
+
+                    <div style={{ fontSize: 12, color: 'red' }}>
+                      {this.state.weightError}
+                    </div>
                   </div>
 
                   <div className='form-group' style={{ marginBottom: '15px' }}>
                     <label style={{ marginBottom: '5px' }}>Height (cm)</label>
                     <input type='number' className='form-control' name='height' min="1" placeholder='Enter Height' value={this.state.height} onChange={this.handleInputChange}></input>
+
+                    <div style={{ fontSize: 12, color: 'red' }}>
+                      {this.state.heightError}
+                    </div>
                   </div>
 
                   <div className='form-group' style={{ marginBottom: '15px' }}>
                     <label style={{ marginBottom: '5px' }}>Joining Date</label>
                     <input type='date' className='form-control' name='joiningDate' placeholder='Enter Joining Date' value={this.state.joiningDate} onChange={this.handleInputChange}></input>
+
+                    <div style={{ fontSize: 12, color: 'red' }}>
+                      {this.state.phoneNumberError}
+                    </div>
                   </div>
 
                   <div className='form-group' style={{ marginBottom: '15px' }}>
@@ -299,7 +378,7 @@ export default class MemberList extends Component {
               &nbsp;&nbsp;
 
               <button className="btn btn-info" onClick={() => this.createPDF(members.memberName, members.address, members.email, members.phoneNumber, members.gender, members.weight, members.height, members.joiningDate, members.otherDetails)}>
-                <i class="fa-solid fa-file-lines"></i>&nbsp;Get Details
+                <i class="fa-solid fa-file-pdf"></i>&nbsp;Get Report
               </button>
 
             </div>

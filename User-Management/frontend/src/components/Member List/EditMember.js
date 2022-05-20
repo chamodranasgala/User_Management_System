@@ -37,35 +37,33 @@ export default class EditMember extends Component {
     let weightError = "";
     let heightError = "";
 
-
-
     if (!this.state.memberName) {
-      memberNameError = 'This field cannot be Empty!';
+      memberNameError = 'This field is required!';
     }
     if (!this.state.address) {
-      addressError = 'This field cannot be Empty!';
+      addressError = 'This field is required!';
     }
     if (!this.state.email) {
-      emailError = 'This field cannot be Empty!';
+      emailError = 'This field is required!';
     }
     if (!this.state.phoneNumber) {
-      phoneNumberError = 'This field cannot be Empty!';
+      phoneNumberError = 'This field is required!';
     }
     if (!this.state.gender) {
-      genderError = 'This field cannot be Empty!';
+      genderError = 'This field is required!';
     }
     if (!this.state.weight) {
-      weightError = 'This field cannot be Empty!';
+      weightError = 'This field is required!';
     }
     if (!this.state.height) {
-      heightError = 'This field cannot be Empty!';
+      heightError = 'This field is required!';
     }
-
 
     if (memberNameError || addressError || emailError || phoneNumberError || genderError || weightError || heightError) {
       this.setState({ memberNameError, addressError, emailError, phoneNumberError, genderError, weightError, heightError });
       return false;
     }
+
     return true;
   };
 
@@ -159,7 +157,7 @@ export default class EditMember extends Component {
 
             <div className='form-group' style={{ marginBottom: '15px' }}>
               <label style={{ marginBottom: '5px' }}>Email</label>
-              <input type='text' className='form-control' name='email' placeholder='Enter Email' value={this.state.email} onChange={this.handleInputChange}></input>
+              <input type='email' className='form-control' name='email' placeholder='Enter Email' value={this.state.email} onChange={this.handleInputChange}></input>
 
               <div style={{ fontSize: 12, color: 'red' }}>
                 {this.state.emailError}
@@ -168,7 +166,12 @@ export default class EditMember extends Component {
 
             <div className='form-group' style={{ marginBottom: '15px' }}>
               <label style={{ marginBottom: '5px' }}>Phone Number</label>
-              <input type='text' className='form-control' name='phoneNumber' placeholder='Enter Phone Number' value={this.state.phoneNumber} onChange={this.handleInputChange}></input>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroupPrepend">+94</span>
+                </div>
+                <input type='tel' className='form-control' name='phoneNumber' placeholder='Enter Phone Number' aria-describedby="inputGroupPrepend" value={this.state.phoneNumber} onChange={this.handleInputChange}></input>
+              </div>
 
               <div style={{ fontSize: 12, color: 'red' }}>
                 {this.state.phoneNumberError}
@@ -177,7 +180,11 @@ export default class EditMember extends Component {
 
             <div className='form-group' style={{ marginBottom: '15px' }}>
               <label style={{ marginBottom: '5px' }}>Gender</label>
-              <input type='text' className='form-control' name='gender' placeholder='Enter Gender' value={this.state.gender} onChange={this.handleInputChange}></input>
+              <select type='text' name='gender' class="form-control" onChange={this.handleInputChange}>
+                <option hidden>{this.state.gender}</option>
+                <option>Male</option>
+                <option>Female</option>
+              </select>
 
               <div style={{ fontSize: 12, color: 'red' }}>
                 {this.state.genderError}
@@ -185,7 +192,7 @@ export default class EditMember extends Component {
             </div>
 
             <div className='form-group' style={{ marginBottom: '15px' }}>
-              <label style={{ marginBottom: '5px' }}>Weight</label>
+              <label style={{ marginBottom: '5px' }}>Weight (kg)</label>
               <input type='text' className='form-control' name='weight' placeholder='Enter Weight' value={this.state.weight} onChange={this.handleInputChange}></input>
 
               <div style={{ fontSize: 12, color: 'red' }}>
@@ -194,7 +201,7 @@ export default class EditMember extends Component {
             </div>
 
             <div className='form-group' style={{ marginBottom: '15px' }}>
-              <label style={{ marginBottom: '5px' }}>Height</label>
+              <label style={{ marginBottom: '5px' }}>Height (cm)</label>
               <input type='text' className='form-control' name='height' placeholder='Enter Height' value={this.state.height} onChange={this.handleInputChange}></input>
 
               <div style={{ fontSize: 12, color: 'red' }}>
