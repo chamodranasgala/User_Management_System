@@ -112,7 +112,9 @@ export default class MemberList extends Component {
               joiningDate: "",
               otherDetails: ""
             }
-          )
+          );
+
+          window.location.href = '/memberlist';
         }
       });
     }

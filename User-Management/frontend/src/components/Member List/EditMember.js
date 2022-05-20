@@ -103,7 +103,9 @@ export default class EditMember extends Component {
               height: "",
               otherDetails: ""
             }
-          )
+          );
+
+          window.location.href = '/memberlist';
         }
       });
     }

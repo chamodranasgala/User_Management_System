@@ -91,6 +91,8 @@ export default class WorkoutPlan extends Component {
               duration: ""
             }
           );
+
+          window.location.href = '/workoutplans';
         }
       });
     }
