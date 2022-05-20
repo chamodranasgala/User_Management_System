@@ -28,7 +28,7 @@ export default class PostMember extends Component {
     const { memberName, address, email, phoneNumber, gender, weight, height, joiningDate, otherDetails } = this.state.member;
 
     return (
-      <div className='container' style={{marginBottom: '50px'}}>
+      <div className='container' style={{ marginBottom: '50px' }}>
         <div className='main'>
           <div style={{ marginTop: '20px' }}>
             <h4>{memberName}</h4>
