@@ -20,12 +20,13 @@ function Header() {
           <ul class="navbar-nav ms-auto">
 
             <li class="nav-item">
-              <a class="button-87" href="#">About</a>
+              <a class="button-85" href="#">About</a>
             </li>
 
             <li class="nav-item">
-              <a class="button-87" href="#">Contact</a>
+              <a class="button-85" href="#">Contact</a>
             </li>
+
           </ul>
 
         </div>
