@@ -96,6 +96,7 @@ export default class WorkoutPlan extends Component {
     }
   }
 
+  // Validation
   validate = () => {
 
     let planNameError = "";
@@ -135,9 +136,9 @@ export default class WorkoutPlan extends Component {
     const doc = new jsPDF(orientation, unit, size); //create document
     const title = `| POWERZONE | `;
 
-    const planNames = `Plan Name: ${planName} `;
-    const prices = `Price (Rs.): ${price} `;
-    const durations = `Duration (Months): ${duration} `;
+    const planNames = `Plan Name:  ${planName} `;
+    const prices = `Price:  Rs.${price}.00 `;
+    const durations = `Duration:  ${duration} Months `;
 
 
     const image = "https://res.cloudinary.com/dnonvyjrq/image/upload/v1651654099/gym_logo_vndrpz.jpg";
@@ -157,7 +158,7 @@ export default class WorkoutPlan extends Component {
 
     doc.addImage(image, 'PNG', left, top, imgWidth, imgHeight);
 
-    doc.save(`WorkoutPlan ${planName}.pdf`)
+    doc.save(`WorkoutPlan - ${planName}.pdf`)
   }
 
   render() {
@@ -180,8 +181,8 @@ export default class WorkoutPlan extends Component {
               <tr>
                 <th scope='col'>#</th>
                 <th scope='col'>Plan Name</th>
-                <th scope='col'>Price (Rs.)</th>
-                <th scope='col'>Duration (Months)</th>
+                <th scope='col'>Price</th>
+                <th scope='col'>Duration</th>
                 <th scope='col'>Action</th>
               </tr>
             </thead>
@@ -191,8 +192,8 @@ export default class WorkoutPlan extends Component {
                 <tr key={index}>
                   <th scope='row'>{index + 1}</th>
                   <td>{workoutplans.planName}</td>
-                  <td>{workoutplans.price}</td>
-                  <td>{workoutplans.duration}</td>
+                  <td>Rs.{workoutplans.price}.00</td>
+                  <td>{workoutplans.duration} Months</td>
                   <td>
                     <a className='btn btn-warning' href={`/editworkoutplan/${workoutplans._id}`}>
                       <i className='fas fa-edit'></i>&nbsp;Edit
@@ -204,7 +205,7 @@ export default class WorkoutPlan extends Component {
                     </a>
                     &nbsp;
 
-                    <button className="btn btn-info" onClick={() => this.createPDF(workoutplans.planName, workoutplans.price, workoutplans.duration)} >
+                    <button class="btn btn-outline-info" onClick={() => this.createPDF(workoutplans.planName, workoutplans.price, workoutplans.duration)} >
                       <i class="fa-solid fa-file-pdf"></i>&nbsp;Generate PDF
                     </button>
 
@@ -216,8 +217,8 @@ export default class WorkoutPlan extends Component {
           </table>
 
 
-
-          <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"><i className='far fa-check-square'></i>&nbsp;Add New Plan</button>
+          {/* Add New Plan */}
+          <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"><i className='far fa-check-square'></i>&nbsp;Add New Plan</button>
 
           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -242,7 +243,12 @@ export default class WorkoutPlan extends Component {
 
                     <div className='form-group' style={{ marginBottom: '15px' }}>
                       <label style={{ marginBottom: '5px' }}>Price (Rs.)</label>
+                      <div class="input-group">
                       <input type="text" className='form-control' name='price' placeholder='Enter Price' value={this.state.price} onChange={this.handleInputChange}></input>
+                        <div class="input-group-append">
+                          <span class="input-group-text">.00</span>
+                        </div>
+                      </div>
 
                       <div style={{ fontSize: 12, color: 'red' }}>
                         {this.state.priceError}
@@ -251,7 +257,7 @@ export default class WorkoutPlan extends Component {
 
                     <div className='form-group' style={{ marginBottom: '15px' }}>
                       <label style={{ marginBottom: '5px' }}>Duration (Months)</label>
-                      <input type="text" className='form-control' name='duration' placeholder='Enter Duration' value={this.state.duration} onChange={this.handleInputChange}></input>
+                      <input type="number" className='form-control' name='duration' placeholder='Enter Duration' value={this.state.duration} onChange={this.handleInputChange}></input>
 
                       <div style={{ fontSize: 12, color: 'red' }}>
                         {this.state.durationError}
@@ -262,7 +268,7 @@ export default class WorkoutPlan extends Component {
                 </div>
 
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
                   <button className='btn btn-success' type='submit' onClick={this.onSubmit}>
                     Add
                   </button>

@@ -135,13 +135,13 @@ export default class MemberList extends Component {
     const doc = new jsPDF(orientation, unit, size); //create document
     const title = `| POWERZONE | `;
 
-    const memberNames = `Member Name: ${memberName} `;
-    const addresss = `Address: ${address} `;
-    const emails = `Email: ${email} `;
-    const phoneNumbers = `Phone Number: ${phoneNumber} `;
+    const memberNames = `Member Name:  ${memberName} `;
+    const addresss = `Address:  ${address} `;
+    const emails = `Email:  ${email} `;
+    const phoneNumbers = `Phone Number: +94 ${phoneNumber} `;
     const genders = `Gender: ${gender} `;
-    const weights = `Weight: ${weight} `;
-    const heights = `Height: ${height} `;
+    const weights = `Weight: ${weight}kg `;
+    const heights = `Height: ${height}cm `;
     const joiningDates = `Joined Date: ${joiningDate} `;
     const otherDetailss = `Other Details: ${otherDetails} `;
 
@@ -176,7 +176,7 @@ export default class MemberList extends Component {
 
   render() {
     return (
-      <div className='container'>
+      <div className='container' style={{marginBottom: '50px'}}>
 
         <br></br>
 
@@ -205,7 +205,7 @@ export default class MemberList extends Component {
                 <form>
                   <div className='form-group' style={{ marginBottom: '15px' }}>
                     <label style={{ marginBottom: '5px' }}>Name</label>
-                    <input type='text' className='form-control' name='memberName' placeholder='Enter Name' value={this.state.memberName} onChange={this.handleInputChange}></input>
+                    <input type='text' className='form-control' name='memberName' placeholder='Enter Name' value={this.state.memberName} onChange={this.handleInputChange} required></input>
                   </div>
 
                   <div className='form-group' style={{ marginBottom: '15px' }}>
@@ -215,32 +215,42 @@ export default class MemberList extends Component {
 
                   <div className='form-group' style={{ marginBottom: '15px' }}>
                     <label style={{ marginBottom: '5px' }}>Email</label>
-                    <input type='text' className='form-control' name='email' placeholder='Enter Email' value={this.state.email} onChange={this.handleInputChange}></input>
+                    <input type='email' className='form-control' name='email' placeholder='Enter Email' value={this.state.email} onChange={this.handleInputChange}></input>
                   </div>
 
                   <div className='form-group' style={{ marginBottom: '15px' }}>
                     <label style={{ marginBottom: '5px' }}>Phone Number</label>
-                    <input type='text' className='form-control' name='phoneNumber' placeholder='Enter Phone Number' value={this.state.phoneNumber} onChange={this.handleInputChange}></input>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroupPrepend">+94</span>
+                      </div>
+                      <input type='tel' className='form-control' name='phoneNumber' placeholder='Enter Phone Number' aria-describedby="inputGroupPrepend" value={this.state.phoneNumber} onChange={this.handleInputChange}></input>
+                    </div>
                   </div>
 
                   <div className='form-group' style={{ marginBottom: '15px' }}>
                     <label style={{ marginBottom: '5px' }}>Gender</label>
-                    <input type='text' className='form-control' name='gender' placeholder='Enter Gender' value={this.state.gender} onChange={this.handleInputChange}></input>
+
+                    <select name='gender' id="inputState" class="form-control" value={this.state.gender} onChange={this.handleInputChange}>
+                      <option selected>Choose...</option>
+                      <option>Male</option>
+                      <option>Female</option>
+                    </select>
                   </div>
 
                   <div className='form-group' style={{ marginBottom: '15px' }}>
-                    <label style={{ marginBottom: '5px' }}>Weight</label>
-                    <input type='text' className='form-control' name='weight' placeholder='Enter Weight' value={this.state.weight} onChange={this.handleInputChange}></input>
+                    <label style={{ marginBottom: '5px' }}>Weight (kg)</label>
+                    <input type='number' className='form-control' name='weight' min="1" placeholder='Enter Weight' value={this.state.weight} onChange={this.handleInputChange}></input>
                   </div>
 
                   <div className='form-group' style={{ marginBottom: '15px' }}>
-                    <label style={{ marginBottom: '5px' }}>Height</label>
-                    <input type='text' className='form-control' name='height' placeholder='Enter Height' value={this.state.height} onChange={this.handleInputChange}></input>
+                    <label style={{ marginBottom: '5px' }}>Height (cm)</label>
+                    <input type='number' className='form-control' name='height' min="1" placeholder='Enter Height' value={this.state.height} onChange={this.handleInputChange}></input>
                   </div>
 
                   <div className='form-group' style={{ marginBottom: '15px' }}>
                     <label style={{ marginBottom: '5px' }}>Joining Date</label>
-                    <input type='text' className='form-control' name='joiningDate' placeholder='Enter Joining Date' value={this.state.joiningDate} onChange={this.handleInputChange}></input>
+                    <input type='date' className='form-control' name='joiningDate' placeholder='Enter Joining Date' value={this.state.joiningDate} onChange={this.handleInputChange}></input>
                   </div>
 
                   <div className='form-group' style={{ marginBottom: '15px' }}>
@@ -251,7 +261,7 @@ export default class MemberList extends Component {
               </div>
 
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-success" onClick={this.onSubmit}>Add</button>
               </div>
 
@@ -260,7 +270,7 @@ export default class MemberList extends Component {
         </div>
 
         {this.state.members.map((members, index) => (
-          <div class="card text-center" style={{ margin: '50px 250px 75px 250px' }}>
+          <div class="card text-center" style={{ margin: '50px 250px 0px 250px' }}>
             <div class="card-header" key={index}>
               Member {index + 1}
             </div>
@@ -272,29 +282,29 @@ export default class MemberList extends Component {
                 {members.email}
                 <br /><br />
 
-                Weight: {members.weight}
+                Weight:   {members.weight}kg
                 <br />
 
-                Height: {members.height}
+                Height:   {members.height}cm
               </p>
 
               <a className='btn btn-warning' href={`/editmember/${members._id}`}>
                 <i className='fas fa-edit'></i>&nbsp;Edit
               </a>
-              &nbsp;
+              &nbsp;&nbsp;
 
               <a className='btn btn-danger' onClick={() => this.onDelete(members._id)}>
                 <i className='far fa-trash-alt'></i>&nbsp;Delete
               </a>
-              &nbsp;
+              &nbsp;&nbsp;
 
               <button className="btn btn-info" onClick={() => this.createPDF(members.memberName, members.address, members.email, members.phoneNumber, members.gender, members.weight, members.height, members.joiningDate, members.otherDetails)}>
-                <i class="fa-solid fa-file-lines"></i>&nbsp;Get Report
+                <i class="fa-solid fa-file-lines"></i>&nbsp;Get Details
               </button>
 
             </div>
             <div class="card-footer text-muted">
-              Joined Date: {members.joiningDate}
+              Joined Date:  {members.joiningDate}
             </div>
           </div>
         ))}

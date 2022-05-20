@@ -3,12 +3,12 @@ import React, { Component } from 'react';
 export default class Login extends Component {
     render() {
         return (
-            <div className='container' style={{ padding: '75px 350px 75px 350px' }}>
+            <div className='container' style={{ padding: '75px 350px 80px 350px' }}>
 
                 <body class="text-center">
                     <main class="form-signin">
                         <form>
-                            <h1 class="h3 mb-3 fw-normal">Login</h1>
+                            <h1 class="h3 mb-3 fw-normal">Admin Login</h1>
 
                             <div class="form-floating">
                                 <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" />

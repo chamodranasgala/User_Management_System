@@ -5,10 +5,8 @@ function Header() {
 
     <div >
       <nav class="navbar navbar-expand-md navbar-light bg-coral">
-        <div style={{ marginLeft: '8px' }}>
-          <a class="" href="#">
-            <img src="https://res.cloudinary.com/dnonvyjrq/image/upload/v1651654099/gym_logo_vndrpz.jpg" class="me-1" height="50" alt="MDB Logo" loading="lazy" />
-          </a>
+        <div style={{ marginLeft: '8px', marginRight: '10px' }}>
+          <img src="https://res.cloudinary.com/dnonvyjrq/image/upload/v1651654099/gym_logo_vndrpz.jpg" class="me-1" height="50" alt="MDB Logo" loading="lazy" />
         </div>
 
         <small className="navbar-brand mb-0 h1">POWERZONE</small>

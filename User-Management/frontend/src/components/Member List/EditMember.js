@@ -26,6 +26,7 @@ export default class EditMember extends Component {
     });
   }
 
+  // Validation
   validate = () => {
 
     let memberNameError = "";
@@ -132,92 +133,90 @@ export default class EditMember extends Component {
 
   render() {
     return (
-      <>
-        <div className='container'>
-          <div className='col-md-8 mt-4 mx-auto'>
-            <center><h1 className='h3 mb-3 font-weight-normal'>Edit Member Details</h1></center>
+      <div className='container' style={{ marginBottom: '75px' }}>
+        <div className='col-md-8 mt-4 mx-auto'>
+          <center><h1 className='h3 mb-3 font-weight-normal'>Edit Member Details</h1></center>
 
-            <form className='needs-validation' noValidate>
+          <form className='needs-validation' noValidate>
 
-              <div className='form-group' style={{ marginBottom: '15px' }}>
-                <label style={{ marginBottom: '5px' }}>Name</label>
-                <input type='text' className='form-control' name='memberName' placeholder='Enter Name' value={this.state.memberName} onChange={this.handleInputChange}></input>
+            <div className='form-group' style={{ marginBottom: '15px' }}>
+              <label style={{ marginBottom: '5px' }}>Name</label>
+              <input type='text' className='form-control' name='memberName' placeholder='Enter Name' value={this.state.memberName} onChange={this.handleInputChange}></input>
 
-                <div style={{ fontSize: 12, color: 'red' }}>
-                  {this.state.memberNameError}
-                </div>
+              <div style={{ fontSize: 12, color: 'red' }}>
+                {this.state.memberNameError}
               </div>
+            </div>
 
-              <div className='form-group' style={{ marginBottom: '15px' }}>
-                <label style={{ marginBottom: '5px' }}>Address</label>
-                <input type='text' className='form-control' name='address' placeholder='Enter Address' value={this.state.address} onChange={this.handleInputChange}></input>
+            <div className='form-group' style={{ marginBottom: '15px' }}>
+              <label style={{ marginBottom: '5px' }}>Address</label>
+              <input type='text' className='form-control' name='address' placeholder='Enter Address' value={this.state.address} onChange={this.handleInputChange}></input>
 
-                <div style={{ fontSize: 12, color: 'red' }}>
-                  {this.state.addressError}
-                </div>
+              <div style={{ fontSize: 12, color: 'red' }}>
+                {this.state.addressError}
               </div>
+            </div>
 
-              <div className='form-group' style={{ marginBottom: '15px' }}>
-                <label style={{ marginBottom: '5px' }}>Email</label>
-                <input type='text' className='form-control' name='email' placeholder='Enter Email' value={this.state.email} onChange={this.handleInputChange}></input>
+            <div className='form-group' style={{ marginBottom: '15px' }}>
+              <label style={{ marginBottom: '5px' }}>Email</label>
+              <input type='text' className='form-control' name='email' placeholder='Enter Email' value={this.state.email} onChange={this.handleInputChange}></input>
 
-                <div style={{ fontSize: 12, color: 'red' }}>
-                  {this.state.emailError}
-                </div>
+              <div style={{ fontSize: 12, color: 'red' }}>
+                {this.state.emailError}
               </div>
+            </div>
 
-              <div className='form-group' style={{ marginBottom: '15px' }}>
-                <label style={{ marginBottom: '5px' }}>Phone Number</label>
-                <input type='text' className='form-control' name='phoneNumber' placeholder='Enter Phone Number' value={this.state.phoneNumber} onChange={this.handleInputChange}></input>
+            <div className='form-group' style={{ marginBottom: '15px' }}>
+              <label style={{ marginBottom: '5px' }}>Phone Number</label>
+              <input type='text' className='form-control' name='phoneNumber' placeholder='Enter Phone Number' value={this.state.phoneNumber} onChange={this.handleInputChange}></input>
 
-                <div style={{ fontSize: 12, color: 'red' }}>
-                  {this.state.phoneNumberError}
-                </div>
+              <div style={{ fontSize: 12, color: 'red' }}>
+                {this.state.phoneNumberError}
               </div>
+            </div>
 
-              <div className='form-group' style={{ marginBottom: '15px' }}>
-                <label style={{ marginBottom: '5px' }}>Gender</label>
-                <input type='text' className='form-control' name='gender' placeholder='Enter Gender' value={this.state.gender} onChange={this.handleInputChange}></input>
+            <div className='form-group' style={{ marginBottom: '15px' }}>
+              <label style={{ marginBottom: '5px' }}>Gender</label>
+              <input type='text' className='form-control' name='gender' placeholder='Enter Gender' value={this.state.gender} onChange={this.handleInputChange}></input>
 
-                <div style={{ fontSize: 12, color: 'red' }}>
-                  {this.state.genderError}
-                </div>
+              <div style={{ fontSize: 12, color: 'red' }}>
+                {this.state.genderError}
               </div>
+            </div>
 
-              <div className='form-group' style={{ marginBottom: '15px' }}>
-                <label style={{ marginBottom: '5px' }}>Weight</label>
-                <input type='text' className='form-control' name='weight' placeholder='Enter Weight' value={this.state.weight} onChange={this.handleInputChange}></input>
+            <div className='form-group' style={{ marginBottom: '15px' }}>
+              <label style={{ marginBottom: '5px' }}>Weight</label>
+              <input type='text' className='form-control' name='weight' placeholder='Enter Weight' value={this.state.weight} onChange={this.handleInputChange}></input>
 
-                <div style={{ fontSize: 12, color: 'red' }}>
-                  {this.state.weightError}
-                </div>
+              <div style={{ fontSize: 12, color: 'red' }}>
+                {this.state.weightError}
               </div>
+            </div>
 
-              <div className='form-group' style={{ marginBottom: '15px' }}>
-                <label style={{ marginBottom: '5px' }}>Height</label>
-                <input type='text' className='form-control' name='height' placeholder='Enter Height' value={this.state.height} onChange={this.handleInputChange}></input>
+            <div className='form-group' style={{ marginBottom: '15px' }}>
+              <label style={{ marginBottom: '5px' }}>Height</label>
+              <input type='text' className='form-control' name='height' placeholder='Enter Height' value={this.state.height} onChange={this.handleInputChange}></input>
 
-                <div style={{ fontSize: 12, color: 'red' }}>
-                  {this.state.heightError}
-                </div>
+              <div style={{ fontSize: 12, color: 'red' }}>
+                {this.state.heightError}
               </div>
+            </div>
 
-              <div className='form-group' style={{ marginBottom: '15px' }}>
-                <label style={{ marginBottom: '5px' }}>Other Details</label>
-                <input type='text' className='form-control' name='otherDetails' placeholder='Enter Other Details' value={this.state.otherDetails} onChange={this.handleInputChange}></input>
-              </div>
+            <div className='form-group' style={{ marginBottom: '15px' }}>
+              <label style={{ marginBottom: '5px' }}>Other Details</label>
+              <input type='text' className='form-control' name='otherDetails' placeholder='Enter Other Details' value={this.state.otherDetails} onChange={this.handleInputChange}></input>
+            </div>
 
-              <button className='btn btn-warning' type='submit' style={{ marginTop: '15px' }} onClick={this.onSubmit}>
-                <i className='far fa-check-square'></i>
-                &nbsp; Edit
-              </button>
+            <button className='btn btn-warning' type='submit' style={{ marginTop: '15px' }} onClick={this.onSubmit}>
+              <i className='far fa-check-square'></i>
+              &nbsp; Edit
+            </button>&nbsp;&nbsp;
 
-            </form>
-          </div>
+            <a href='/memberlist'><button type='button' class="btn btn-secondary" style={{ marginTop: '15px' }}><i class="fa-regular fa-circle-xmark"></i>&nbsp;Close</button></a>
+
+          </form>
         </div>
-
-        <br /><br />
-      </>
+      </div>
     )
   }
 }
