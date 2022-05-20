@@ -163,118 +163,116 @@ export default class WorkoutPlan extends Component {
 
   render() {
     return (
-      <div className='bg1'>
-        <div className='container' style={{ paddingBottom: '300px' }}>
+      <div className='container' style={{ marginBottom: '70px', marginTop: '20px' }}>
 
-          <div className='row'>
-            <div className='col-lg-9 mt-2 mb-2'>
-              <h4>Workout Plans</h4>
-            </div>
-
-            <div className='col-lg-3 mt-2 mb-2'>
-              <input className='form-control' type='search' placeholder='Search' name='searchQuery' onChange={this.handleSearchArea}></input>
-            </div>
+        <div className='row'>
+          <div className='col-lg-9 mt-2 mb-2'>
+            <h4>Workout Plans</h4>
           </div>
 
-          <table className='table table-hover' style={{ marginTop: '40px' }}>
-            <thead>
-              <tr>
-                <th scope='col'>#</th>
-                <th scope='col'>Plan Name</th>
-                <th scope='col'>Price</th>
-                <th scope='col'>Duration</th>
-                <th scope='col'>Action</th>
-              </tr>
-            </thead>
+          <div className='col-lg-3 mt-2 mb-2'>
+            <input className='form-control' type='search' placeholder='Search' name='searchQuery' onChange={this.handleSearchArea}></input>
+          </div>
+        </div>
 
-            <tbody>
-              {this.state.workoutplans.map((workoutplans, index) => (
-                <tr key={index}>
-                  <th scope='row'>{index + 1}</th>
-                  <td>{workoutplans.planName}</td>
-                  <td>Rs.{workoutplans.price}.00</td>
-                  <td>{workoutplans.duration} Months</td>
-                  <td>
-                    <a className='btn btn-warning' href={`/editworkoutplan/${workoutplans._id}`}>
-                      <i className='fas fa-edit'></i>&nbsp;Edit
-                    </a>
-                    &nbsp;&nbsp;
+        <table className='table table-hover' style={{ marginTop: '40px' }}>
+          <thead>
+            <tr>
+              <th scope='col'>#</th>
+              <th scope='col'>Plan Name</th>
+              <th scope='col'>Price</th>
+              <th scope='col'>Duration</th>
+              <th scope='col'>Action</th>
+            </tr>
+          </thead>
 
-                    <a className='btn btn-danger' href="" onClick={() => this.onDelete(workoutplans._id)}>
-                      <i className='far fa-trash-alt'></i>&nbsp;Delete
-                    </a>
-                    &nbsp;&nbsp;
+          <tbody>
+            {this.state.workoutplans.map((workoutplans, index) => (
+              <tr key={index}>
+                <th scope='row'>{index + 1}</th>
+                <td>{workoutplans.planName}</td>
+                <td>Rs.{workoutplans.price}.00</td>
+                <td>{workoutplans.duration} Months</td>
+                <td>
+                  <a className='btn btn-warning' href={`/editworkoutplan/${workoutplans._id}`}>
+                    <i className='fas fa-edit'></i>&nbsp;Edit
+                  </a>
+                  &nbsp;&nbsp;
 
-                    <button class="btn btn-outline-info" onClick={() => this.createPDF(workoutplans.planName, workoutplans.price, workoutplans.duration)} >
-                      <i class="fa-solid fa-file-pdf"></i>&nbsp;Get Report
-                    </button>
+                  <a className='btn btn-danger' href="" onClick={() => this.onDelete(workoutplans._id)}>
+                    <i className='far fa-trash-alt'></i>&nbsp;Delete
+                  </a>
+                  &nbsp;&nbsp;
 
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-
-          </table>
-
-
-          {/* Add New Plan */}
-          <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"><i className='far fa-check-square'></i>&nbsp;Add New Plan</button>
-
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Add New Plan</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-
-                <div class="modal-body">
-
-                  <form className='needs-validation' noValidate>
-                    <div className='form-group' style={{ marginBottom: '15px' }}>
-                      <label style={{ marginBottom: '5px' }}>Plan Name</label>
-                      <input type='text' className='form-control' name='planName' placeholder='Enter Plan Name' value={this.state.planName} onChange={this.handleInputChange}></input>
-
-                      <div style={{ fontSize: 12, color: 'red' }}>
-                        {this.state.planNameError}
-                      </div>
-                    </div>
-
-                    <div className='form-group' style={{ marginBottom: '15px' }}>
-                      <label style={{ marginBottom: '5px' }}>Price (Rs.)</label>
-                      <div class="input-group">
-                      <input type="text" className='form-control' name='price' placeholder='Enter Price' value={this.state.price} onChange={this.handleInputChange}></input>
-                        <div class="input-group-append">
-                          <span class="input-group-text">.00</span>
-                        </div>
-                      </div>
-
-                      <div style={{ fontSize: 12, color: 'red' }}>
-                        {this.state.priceError}
-                      </div>
-                    </div>
-
-                    <div className='form-group' style={{ marginBottom: '15px' }}>
-                      <label style={{ marginBottom: '5px' }}>Duration (Months)</label>
-                      <input type="number" className='form-control' name='duration' placeholder='Enter Duration' value={this.state.duration} onChange={this.handleInputChange}></input>
-
-                      <div style={{ fontSize: 12, color: 'red' }}>
-                        {this.state.durationError}
-                      </div>
-                    </div>
-                  </form>
-
-                </div>
-
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                  <button className='btn btn-success' type='submit' onClick={this.onSubmit}>
-                    Add
+                  <button class="btn btn-outline-info" onClick={() => this.createPDF(workoutplans.planName, workoutplans.price, workoutplans.duration)} >
+                    <i class="fa-solid fa-file-pdf"></i>&nbsp;Get Report
                   </button>
-                </div>
+
+                </td>
+              </tr>
+            ))}
+          </tbody>
+
+        </table>
+
+
+        {/* Add New Plan */}
+        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"><i className='far fa-check-square'></i>&nbsp;Add New Plan</button>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add New Plan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+
+              <div class="modal-body">
+
+                <form className='needs-validation' noValidate>
+                  <div className='form-group' style={{ marginBottom: '15px' }}>
+                    <label style={{ marginBottom: '5px' }}>Plan Name</label>
+                    <input type='text' className='form-control' name='planName' placeholder='Enter Plan Name' value={this.state.planName} onChange={this.handleInputChange}></input>
+
+                    <div style={{ fontSize: 12, color: 'red' }}>
+                      {this.state.planNameError}
+                    </div>
+                  </div>
+
+                  <div className='form-group' style={{ marginBottom: '15px' }}>
+                    <label style={{ marginBottom: '5px' }}>Price (Rs.)</label>
+                    <div class="input-group">
+                      <input type="text" className='form-control' name='price' placeholder='Enter Price' value={this.state.price} onChange={this.handleInputChange}></input>
+                      <div class="input-group-append">
+                        <span class="input-group-text">.00</span>
+                      </div>
+                    </div>
+
+                    <div style={{ fontSize: 12, color: 'red' }}>
+                      {this.state.priceError}
+                    </div>
+                  </div>
+
+                  <div className='form-group' style={{ marginBottom: '15px' }}>
+                    <label style={{ marginBottom: '5px' }}>Duration (Months)</label>
+                    <input type="number" className='form-control' name='duration' placeholder='Enter Duration' value={this.state.duration} onChange={this.handleInputChange}></input>
+
+                    <div style={{ fontSize: 12, color: 'red' }}>
+                      {this.state.durationError}
+                    </div>
+                  </div>
+                </form>
 
               </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                <button className='btn btn-success' type='submit' onClick={this.onSubmit}>
+                  Add
+                </button>
+              </div>
+
             </div>
           </div>
         </div>
