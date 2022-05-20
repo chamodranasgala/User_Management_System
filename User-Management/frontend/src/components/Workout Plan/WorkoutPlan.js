@@ -30,7 +30,7 @@ export default class WorkoutPlan extends Component {
   //Delete Button
   onDelete = (id) => {
     axios.delete(`/workoutplan/delete/${id}`).then((res) => {
-      alert("Deleted Successfully.")
+      alert("Deleted Successfully.");
       this.retrieveWorkoutPlans();
     });
   }
@@ -90,7 +90,7 @@ export default class WorkoutPlan extends Component {
               price: "",
               duration: ""
             }
-          )
+          );
         }
       });
     }
@@ -199,10 +199,9 @@ export default class WorkoutPlan extends Component {
                   </a>
                   &nbsp;&nbsp;
 
-                  <a className='btn btn-danger' href="" onClick={() => this.onDelete(workoutplans._id)}>
+                  <button type="button" class="btn btn-danger" onClick={() => this.onDelete(workoutplans._id)}>
                     <i className='far fa-trash-alt'></i>&nbsp;Delete
-                  </a>
-                  &nbsp;&nbsp;
+                  </button>&nbsp;&nbsp;
 
                   <button class="btn btn-outline-info" onClick={() => this.createPDF(workoutplans.planName, workoutplans.price, workoutplans.duration)} >
                     <i class="fa-solid fa-file-pdf"></i>&nbsp;Get Report
@@ -217,14 +216,14 @@ export default class WorkoutPlan extends Component {
 
 
         {/* Add New Plan */}
-        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"><i className='far fa-check-square'></i>&nbsp;Add New Plan</button>
+        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#addplan"><i className='far fa-check-square'></i>&nbsp;Add New Plan</button>
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="addplan" tabindex="-1" aria-labelledby="addplanLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
 
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add New Plan</h5>
+                <h5 class="modal-title" id="addplanLabel">Add New Plan</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
 
@@ -268,9 +267,7 @@ export default class WorkoutPlan extends Component {
 
               <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                <button className='btn btn-success' type='submit' onClick={this.onSubmit}>
-                  Add
-                </button>
+                <button className='btn btn-success' type='submit' onClick={this.onSubmit}>Add</button>
               </div>
 
             </div>

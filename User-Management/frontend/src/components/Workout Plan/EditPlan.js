@@ -12,6 +12,22 @@ export default class EditPlan extends Component {
     }
   }
 
+  componentDidMount() {
+    const id = this.props.match.params.id;
+
+    axios.get(`/workoutplan/${id}`).then((res) => {
+      if (res.data.success) {
+        this.setState({
+          planName: res.data.workoutplan.planName,
+          price: res.data.workoutplan.price,
+          duration: res.data.workoutplan.duration
+        });
+
+        console.log(this.state.workoutplan);
+      }
+    });
+  }
+
   handleInputChange = (e) => {
     const { name, value } = e.target;
 
@@ -48,7 +64,7 @@ export default class EditPlan extends Component {
     return true;
   };
 
-
+  //Edit
   onSubmit = (e) => {
     e.preventDefault();
 
@@ -69,32 +85,17 @@ export default class EditPlan extends Component {
       axios.put(`/workoutplan/update/${id}`, data).then((res) => {
         if (res.data.success) {
           alert("Updated Successfully");
+          
           this.setState(
             {
               planName: "",
               price: "",
               duration: ""
             }
-          )
+          );
         }
       });
     }
-  }
-
-
-  componentDidMount() {
-    const id = this.props.match.params.id;
-
-    axios.get(`/workoutplan/${id}`).then((res) => {
-      if (res.data.success) {
-        this.setState({
-          planName: res.data.workoutplan.planName,
-          price: res.data.workoutplan.price,
-          duration: res.data.workoutplan.duration
-        });
-        console.log(this.state.workoutplan);
-      }
-    });
   }
 
   render() {
