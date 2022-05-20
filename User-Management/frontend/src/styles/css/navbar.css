@@ -19,5 +19,5 @@
 }
 
 .navb li a:hover:not(.active) {
-  background-color: green;
+  background-color: rgb(32, 197, 32);
 }

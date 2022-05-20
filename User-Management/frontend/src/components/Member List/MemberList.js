@@ -186,11 +186,11 @@ export default class MemberList extends Component {
 
         <br></br>
 
-        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" style={{ margin: '0px 0px 0px 250px' }}>
+        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" style={{ marginLeft: '250px' }}>
           Add New Member
         </button>
 
-        <div style={{ margin: '50px 250px -10px 250px' }}>
+        <div style={{ margin: '30px 250px 0px 250px' }}>
           <input className='form-control' type='search' placeholder='Search' name='searchQuery' onChange={this.handleSearchArea}></input>
         </div>
 
@@ -270,7 +270,7 @@ export default class MemberList extends Component {
         </div>
 
         {this.state.members.map((members, index) => (
-          <div class="card text-center" style={{ margin: '50px 250px 0px 250px' }}>
+          <div class="card text-center" style={{ margin: '35px 250px 0px 250px' }}>
             <div class="card-header" key={index}>
               Member {index + 1}
             </div>
